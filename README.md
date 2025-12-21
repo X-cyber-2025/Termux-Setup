@@ -91,6 +91,11 @@ apt upgrade -y
 python -m pip install colorama
 pip install colorama
 pip install python-whois
+pkg update && pkg upgrade
+pkg install python -y
+pip install --upgrade pip
+pip install tqdm
+python -m pip install tqdm
 pkg install python
 pkg install python2
 pkg install git
