@@ -88,6 +88,8 @@ pkg update
 pkg upgrade
 apt update
 apt upgrade -y
+python -m pip install colorama
+pip install colorama
 pkg install python
 pkg install python2
 pkg install git
