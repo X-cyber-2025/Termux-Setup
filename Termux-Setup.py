@@ -33,9 +33,9 @@ def dashboard_menu():
             original_main()
             input("\nDone. Press Enter...")
         elif c == "2":
-            print("Web → IP & Domain feature not loaded")
+            web_to_ip()
         elif c == "3":
-            print("Web → Port Scan feature not loaded")
+            web_port_scan()
         elif c == "0":
             sys.exit(0)
 HOME = Path.home()
