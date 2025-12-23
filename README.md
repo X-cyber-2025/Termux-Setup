@@ -88,6 +88,9 @@ pkg update
 pkg upgrade
 apt update
 apt upgrade -y
+pkg update -y
+pkg install python -y
+pkg insall nmap
 python -m pip install colorama
 pip install colorama
 pip install python-whois
@@ -102,7 +105,7 @@ pip install tqdm pyfiglet colorama requests
 pkg install python
 pkg install python2
 pkg install git
-pkg install git
+pkg install git -y
 pkg install python
 pkg install python2
 pkg install python3
