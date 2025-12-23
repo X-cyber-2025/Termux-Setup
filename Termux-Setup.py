@@ -8,7 +8,6 @@ from typing import List, Tuple, Dict
 BLUE = "\033[94m"
 RESET = "\033[0m"
 
-# ================= BANNER =================
 def show_banner():
     os.system("clear")
     print(BLUE + r"""
@@ -21,43 +20,6 @@ def show_banner():
         TERMUX POWER SUITE
 """ + RESET)
 
-# ================= WEB → IP =================
-def web_to_ip():
-    show_banner()
-    target = input("Enter website: ").strip()
-    if not target:
-        return
-
-    domain = target.replace("https://","").replace("http://","").split("/")[0]
-    print("\nDomain:", domain)
-
-    try:
-        out = subprocess.check_output(
-            ["bash","-lc", f"getent hosts {shlex.quote(domain)}"],
-            text=True
-        )
-        print("IP:", out.split()[0])
-    except:
-        print("IP: Not found")
-
-    input("\nPress Enter...")
-
-# ================= WEB → PORT SCAN =================
-def web_port_scan():
-    show_banner()
-    target = input("Enter website/IP: ").strip()
-    if not target:
-        return
-
-    target = target.replace("https://","").replace("http://","").split("/")[0]
-    print("\nScanning OPEN ports only...\n")
-    subprocess.run(
-        ["bash","-lc", f"nmap -p- --open {shlex.quote(target)}"],
-        check=False
-    )
-    input("\nPress Enter...")
-
-# ================= DASHBOARD =================
 def dashboard_menu():
     while True:
         show_banner()
@@ -71,21 +33,21 @@ def dashboard_menu():
             original_main()
             input("\nDone. Press Enter...")
         elif c == "2":
-            web_to_ip()
+            print("Web → IP & Domain feature not loaded")
         elif c == "3":
-            web_port_scan()
+            print("Web → Port Scan feature not loaded")
         elif c == "0":
             sys.exit(0)
-
-# ================= CORE CONFIG =================
 HOME = Path.home()
 LOGFILE = HOME / "termux-full-setup.log"
 TOOLS_DIR = HOME / "tools"
 BACKUP_DIR = HOME / "tool-backups"
+BASHRC = HOME / ".bashrc"
 
 MAX_RETRIES = 3
 BACKOFF_BASE = 4
 CMD_TIMEOUT = 900
+PKG_NAME_CONFIDENCE = 0.72
 
 def ts():
     return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -118,8 +80,6 @@ def run_with_retry(cmd):
             log(f"[FAIL] {e}")
             time.sleep(BACKOFF_BASE * i)
     raise RuntimeError(cmd)
-
-# ================= INSTALLER =================
 def install_packages():
     log("AUTO-HEAVY INSTALL START")
 
@@ -462,8 +422,6 @@ def install_packages():
             log(f"[SKIP] {cmd} : {e}")
 
     log("AUTO-HEAVY INSTALL FINISHED")
-
-# ================= GITHUB TOOL UPDATE =================
 def github_tools_auto_update():
     log("GITHUB TOOL AUTO UPDATE START")
     TOOLS_DIR.mkdir(exist_ok=True)
@@ -475,6 +433,7 @@ def github_tools_auto_update():
 
         name = tool.name
         backup = BACKUP_DIR / f"{name}-{int(time.time())}.tar.gz"
+
         run_raw(f"tar -czf {backup} -C {TOOLS_DIR} {name}")
 
         try:
@@ -488,6 +447,6 @@ def original_main():
     install_packages()
     github_tools_auto_update()
 
-# ================= MAIN =================
+# 🔒 AUTO-INSTALL OFF (IMPORTANT)
 if __name__ == "__main__":
     dashboard_menu()
