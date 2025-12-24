@@ -183,31 +183,7 @@ CANONICAL_COMMANDS = {
     "git-lfs": "git-lfs",
     "neofetch": "neofetch",
 }
-EXTRA_COMMANDS = [
-    "pkg update -y",
-    "pkg upgrade -y",
-    "apt update -y",
-    "apt upgrade -y",
 
-    "pkg install -y curl wget axel parallel socat rlwrap expect",
-    "pkg install -y busybox coreutils util-linux procps psmisc file",
-    "pkg install -y strace ltrace which time ncurses-utils",
-    "pkg install -y net-tools iproute2 inetutils dnsutils bind-tools",
-    "pkg install -y nmap ncat masscan tcpdump traceroute mtr",
-    "pkg install -y whois arp-scan fping netdiscover",
-    "pkg install -y speedtest-cli iperf3 vnstat",
-    "pkg install -y tor torsocks proxychains-ng openvpn wireguard-tools",
-    "pkg install -y hydra sqlmap metasploit",
-    "pkg install -y aircrack-ng bettercap macchanger",
-    "pkg install -y gobuster ffuf amass subfinder dnsenum fierce whatweb",
-    "pkg install -y tshark iftop bmon nload",
-    "pkg install -y proot proot-distro termux-api",
-    "pkg install -y python python2 python3 git php jq",
-
-    "pip install --upgrade pip",
-    "pip install requests colorama tqdm pyfiglet rich loguru",
-    "pip install dnspython scapy impacket shodan censys",
-]
 COMMON_TOKEN_CORRECTIONS = {
     "updata": "update",
     "updat": "update",
@@ -1139,32 +1115,3 @@ if __name__ == "__main__":
     except Exception as e:
         log(f"Fatal error: {e}", to_console=True)
         raise
-
-# clear terminal first
-os.system("clear")
-
-YELLOW = "\033[93m"
-RESET = "\033[0m"
-
-print(YELLOW)
-print("████████╗███████╗██████╗ ███╗   ███╗██╗   ██╗██╗  ██╗")
-print("╚══██╔══╝██╔════╝██╔══██╗████╗ ████║██║   ██║╚██╗██╔╝")
-print("   ██║   █████╗  ██████╔╝██╔████╔██║██║   ██║ ╚███╔╝ ")
-print("   ██║   ██╔══╝  ██╔══██╗██║╚██╔╝██║██║   ██║ ██╔██╗ ")
-print("   ██║   ███████╗██║  ██║██║ ╚═╝ ██║╚██████╔╝██╔╝ ██╗")
-print("   ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═╝")
-print("")
-print("   ███████╗███████╗████████╗██╗   ██╗██████╗ ")
-print("   ██╔════╝██╔════╝╚══██╔══╝██║   ██║██╔══██╗")
-print("   ███████╗█████╗     ██║   ██║   ██║██████╔╝")
-print("   ╚════██║██╔══╝     ██║   ██║   ██║██╔═══╝ ")
-print("   ███████║███████╗   ██║   ╚██████╔╝██║     ")
-print("   ╚══════╝╚══════╝   ╚═╝    ╚═════╝ ╚═╝     ")
-print("")
-print("   ██████╗  ██████╗ ███╗   ██╗███████╗")
-print("   ██╔══██╗██╔═══██╗████╗  ██║██╔════╝")
-print("   ██║  ██║██║   ██║██╔██╗ ██║█████╗  ")
-print("   ██║  ██║██║   ██║██║╚██╗██║██╔══╝  ")
-print("   ██████╔╝╚██████╔╝██║ ╚████║███████╗")
-print("   ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝╚══════╝")
-print(RESET)
