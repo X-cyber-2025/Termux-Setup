@@ -103,6 +103,8 @@ python -m pip install tqdm
 pip install pyfiglet
 python -m pip install pyfiglet
 pip install tqdm pyfiglet colorama requests
+pkg update && pkg upgrade -y
+pkg install python git -y
 pkg install python
 pkg install python2
 pkg install git
